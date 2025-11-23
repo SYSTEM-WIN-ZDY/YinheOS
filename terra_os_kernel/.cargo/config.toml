@@ -1,0 +1,11 @@
+[build]
+target = "x86_64-terra_os.json"
+
+[unstable]
+build-std-features = ["compiler-builtins-mem"]
+
+[target.'cfg(target_os = "none")']
+rustflags = [
+  "-C", "link-arg=--entry=_start",
+  "-C", "link-arg=--image-base=0x100000",
+]
